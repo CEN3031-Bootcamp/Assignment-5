@@ -4,10 +4,12 @@ var should = require('should'),
     config = require('../config/config');
 
 var listing = {
-  code: 'LBW',
+  code: 'LBWEST',
   name: 'Library West', 
   address: '1545 W University Ave, Gainesville, FL 32603, United States'
 };
+
+var id;
 
 describe('Listing Schema Unit Tests', function() {
 
@@ -28,15 +30,17 @@ describe('Listing Schema Unit Tests', function() {
       new Listing({
         name: listing.name, 
         code: listing.code
-      }).save(function(err){
+      }).save(function(err, doc){
         should.not.exist(err);
+        id = doc._id;
         done();
       });
     });
 
     it('saves properly when all three properties provided', function(done){
-      new Listing(listing).save(function(err){
+      new Listing(listing).save(function(err, doc){
         should.not.exist(err);
+        id = doc._id;
         done();
       });
     });
@@ -63,9 +67,15 @@ describe('Listing Schema Unit Tests', function() {
 
   afterEach(function(done) {
     if(id) {
+<<<<<<< HEAD
       Listing.remove({ _id: id }).exec(function() {
          id = null;
          done();
+=======
+      Listing.remove({_id: id}, function(err){
+        id = null;
+        done();
+>>>>>>> CEN3031-spr16/master
       });
     } else {
       done();
