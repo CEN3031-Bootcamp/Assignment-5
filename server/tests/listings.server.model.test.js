@@ -67,21 +67,9 @@ describe('Listing Schema Unit Tests', function() {
 
   afterEach(function(done) {
     if(id) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-      Listing.remove({ _id: id }).exec(function() {
-         id = null;
-         done();
-=======
       Listing.remove({_id: id}, function(err){
         id = null;
         done();
->>>>>>> CEN3031-spr16/master
-=======
-      Listing.remove({_id: id}, function(err){
-        id = null;
-        done();
->>>>>>> CEN3031-spr16/master
       });
     } else {
       done();
